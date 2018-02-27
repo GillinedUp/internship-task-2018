@@ -10,11 +10,15 @@ public class Message {
         this.errorCode = errorCode;
     }
 
-    public String getUserAgent() {
+    public static synchronized Message getInstance(String userAgent, int errorCode) {
+        return new Message(userAgent, errorCode);
+    }
+
+    public synchronized String getUserAgent() {
         return userAgent;
     }
 
-    public int getErrorCode() {
+    public synchronized int getErrorCode() {
         return errorCode;
     }
 }
